@@ -5,9 +5,135 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #bce0ee;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.calculator {
+  position: relative;
+  margin: auto;
+  width: 200px;
+  height: 350px;
+  background-color: white;
+}
+
+.button {
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  font-size: 32px;
+  font-weight: 500;
+  position: absolute;
+  bottom: 0;
+}
+
+.display {
+  position: absolute;
+  width: 100%;
+  text-align: right;
+  background-color: skyblue;
+  border-radius: 10px;
+}
+
+.btn-1 {
+  bottom: 50px;
+}
+
+.btn-2 {
+  bottom: 50px;
+  left: 50px;
+}
+
+.btn-3 {
+  bottom: 50px;
+  left: 100px;
+}
+
+.btn-4 {
+  bottom: 100px;
+}
+
+.btn-5 {
+  bottom: 100px;
+  left: 50px;
+}
+
+.btn-6 {
+  bottom: 100px;
+  left: 100px;
+}
+
+.btn-7 {
+  bottom: 150px;
+}
+
+.btn-8 {
+  bottom: 150px;
+  left: 50px;
+}
+
+.btn-9 {
+  bottom: 150px;
+  left: 100px;
+}
+
+.btn-dot {
+  left: 50px;
+}
+
+.btn-plus-minus {
+  padding-left: 3px;
+  left: 100px;
+}
+
+.btn-equals {
+  color: green;
+  left: 150px;
+}
+
+.btn-brackets {
+  color: #6cc4e7;
+  left: 150px;
+  bottom: 50px;
+  padding-bottom: 4px;
+}
+
+.btn-plus {
+  color: #6cc4e7;
+  left: 150px;
+  bottom: 100px;
+}
+
+.btn-minus {
+  color: #6cc4e7;
+  left: 150px;
+  bottom: 150px;
+}
+
+.btn-divide {
+  color: #6cc4e7;
+  left: 50px;
+  bottom: 200px;
+}
+
+.btn-multiply {
+  color: #6cc4e7;
+  left: 100px;
+  bottom: 200px;
+  padding-bottom: 4px;
+}
+.btn-delete {
+  color: #6cc4e7;
+  left: 150px;
+  bottom: 200px;
+  text-align: top;
+}
+
+.btn-C {
+  color: #6cc4e7;
+  bottom: 200px;
 }
