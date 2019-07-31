@@ -19,6 +19,7 @@ code {
   width: 200px;
   height: 350px;
   background-color: white;
+  border: solid 1px black;
 }
 
 .button {
@@ -33,10 +34,20 @@ code {
 
 .display {
   position: absolute;
-  width: 100%;
+  width: 95%;
+  padding-right: 5px;
   text-align: right;
-  background-color: skyblue;
   border-radius: 10px;
+}
+
+.message {
+  display: inline-block;
+  position: relative;
+  left: 200px;
+  background-color: whitesmoke;
+  color: red;
+  padding: 0 5px 0 5px;
+  visibility: hidden;
 }
 
 .btn-1 {
@@ -126,6 +137,7 @@ code {
   bottom: 200px;
   padding-bottom: 4px;
 }
+
 .btn-delete {
   color: #6cc4e7;
   left: 150px;
@@ -133,7 +145,7 @@ code {
   text-align: top;
 }
 
-.btn-C {
+.btn-clear {
   color: #6cc4e7;
   bottom: 200px;
 }
