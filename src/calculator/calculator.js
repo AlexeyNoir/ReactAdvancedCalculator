@@ -5,60 +5,77 @@ class Calculator extends React.Component {
     super(props);
     this.state = {
       displayValue: '',
-      innerValue: null,
+      savedInnerValue: null,
       operator: null,
       operatorIsPresent: false
     }
   }
 
   input(symbol) {
-    const {displayValue, operatorIsPresent} = this.state;
-    this.setState({
-      displayValue: displayValue + symbol
-    })
+    const {displayValue, savedInnerValue, operatorIsPresent} = this.state;
+    if (operatorIsPresent) {
+      this.setState({
+        displayValue: '' + symbol,
+        operatorIsPresent: false
+      })
+    } else if (!operatorIsPresent) {
+      this.setState({
+        displayValue: displayValue + symbol,
+        savedInnerValue: savedInnerValue + symbol
+      })
+    }
   }
 
-  // operator(symbol) {
-  //   const {displayValue} = this.state;
-  //   this.setState({
-  //     displayValue: displayValue ? displayValue + symbol : displayValue
-  //   })
-  // }
+  operator(inputOperator) {
+    const {displayValue} = this.state;
+    if (displayValue) {
+      this.setState({
+        operator: inputOperator,
+        operatorIsPresent: true
+      })
+    }
+  }
 
-  plusOrMinus() {
+  positiveOrNegative() {
     const {displayValue} = this.state;
     this.setState({
       displayValue: Math.sign(Number(displayValue)) !== -1 ? '-' + displayValue : displayValue.slice(1)
     })
   }
 
-  operation(operator) {
-    const {displayValue, innerValue} = this.state;
+  operation() {
+    const {displayValue, savedInnerValue, operator} = this.state;
     const enteredValue = parseFloat(displayValue);
     const operators = {
-      '+': (previousValue, displayValue) => previousValue + displayValue,
-      '-': (previousValue, displayValue) => previousValue - displayValue,
-      'x': (previousValue, displayValue) => previousValue * displayValue,
-      '÷': (previousValue, displayValue) => previousValue / displayValue,
-      '=': (previousValue, displayValue) => displayValue
+      '+': (firstValue, secondValue) => firstValue + secondValue,
+      '-': (firstValue, secondValue) => firstValue - secondValue,
+      'x': (firstValue, secondValue) => firstValue * secondValue,
+      '÷': (firstValue, secondValue) => firstValue / secondValue,
+      '=': (firstValue, secondValue) => secondValue
     }
+
     if (operator) {
-      const updatedValue = operators[operator](innerValue, enteredValue)
+      const computedValue = operators[operator](savedInnerValue, enteredValue)
+      this.setState({
+        displayValue: computedValue
+      })
     }
   }
 
-  equals
-
   deletion() {
-    const {displayValue} = this.state;
+    const {displayValue, savedInnerValue} = this.state;
     this.setState({
-      displayValue: displayValue.slice(0, -1)
+      displayValue: displayValue.slice(0, -1),
+      savedInnerValue: savedInnerValue.silce(0, -1)
     })
   }
 
   clearInput() {
     this.setState({
-      displayValue: ''
+      displayValue: '',
+      savedInnerValue: null,
+      operator: null,
+      operatorIsPresent: false
     })
   }
 
@@ -79,13 +96,13 @@ class Calculator extends React.Component {
         <button className="button btn-8" onClick={() => this.input(8)}>8</button>
         <button className="button btn-9" onClick={() => this.input(9)}>9</button>
         <button className="button btn-dot" onClick={() => this.input('.')}>.</button>
-        <button className="button btn-plus-minus" onClick={() => this.plusOrMinus()}>+/-</button>
+        <button className="button btn-plus-minus" onClick={() => this.positiveOrNegative()}>+/-</button>
         <button className="button btn-equals" onClick={() => this.operation()}>=</button>
         <button className="button btn-brackets">()</button>
-        <button className="button btn-plus" onClick={() => this.operation('+')}>+</button>
-        <button className="button btn-minus" onClick={() => this.operation('-')}>-</button>
-        <button className="button btn-divide" onClick={() => this.operation('÷')}>÷</button>
-        <button className="button btn-multiply" onClick={() => this.operation('x')}>x</button>
+        <button className="button btn-plus" onClick={() => this.operator('+')}>+</button>
+        <button className="button btn-minus" onClick={() => this.operator('-')}>-</button>
+        <button className="button btn-divide" onClick={() => this.operator('÷')}>÷</button>
+        <button className="button btn-multiply" onClick={() => this.operator('x')}>x</button>
         <button className="button btn-delete" onClick={() => this.deletion()}>⌫</button>
         <button className="button btn-clear" onClick={() => this.clearInput()}>C</button>
         <div className="message">Error</div>
