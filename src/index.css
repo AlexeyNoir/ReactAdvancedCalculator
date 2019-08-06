@@ -16,11 +16,30 @@ code {
 .calculator {
   position: relative;
   margin: auto;
-  width: 200px;
+  width: 220px;
   height: 350px;
   background-color: white;
   border: solid 1px black;
+  transition: width 0.4s;
+  overflow: hidden;
 }
+
+.display {
+  position: absolute;
+  width: 95%;
+  padding-right: 5px;
+  text-align: right;
+  border-radius: 10px;
+}
+
+/* .message {
+  display: inline-block;
+  position: relative;
+  left: 200px;
+  background-color: whitesmoke;
+  color: red;
+  padding: 0 5px 0 5px;
+} */
 
 .button {
   background-color: white;
@@ -32,115 +51,104 @@ code {
   bottom: 0;
 }
 
-.display {
-  position: absolute;
-  width: 95%;
-  padding-right: 5px;
-  text-align: right;
-  border-radius: 10px;
-}
-
-.message {
-  display: inline-block;
-  position: relative;
-  left: 200px;
-  background-color: whitesmoke;
-  color: red;
-  padding: 0 5px 0 5px;
-  visibility: hidden;
+.btn-0 {
+  right: 150px;
 }
 
 .btn-1 {
   bottom: 50px;
+  right: 150px;
 }
 
 .btn-2 {
   bottom: 50px;
-  left: 50px;
+  right: 100px;
 }
 
 .btn-3 {
   bottom: 50px;
-  left: 100px;
+  right: 50px;
 }
 
 .btn-4 {
   bottom: 100px;
+  right: 150px;
 }
 
 .btn-5 {
   bottom: 100px;
-  left: 50px;
+  right: 100px;
 }
 
 .btn-6 {
   bottom: 100px;
-  left: 100px;
+  right: 50px;
 }
 
 .btn-7 {
   bottom: 150px;
+  right: 150px;
 }
 
 .btn-8 {
   bottom: 150px;
-  left: 50px;
+  right: 100px;
 }
 
 .btn-9 {
   bottom: 150px;
-  left: 100px;
+  right: 50px;
 }
 
 .btn-dot {
-  left: 50px;
+  right: 100px;
 }
 
 .btn-plus-minus {
   padding-left: 3px;
-  left: 100px;
+  right: 50px;
 }
 
 .btn-equals {
   color: green;
-  left: 150px;
+  right: 0px;
 }
 
 .btn-brackets {
   color: #6cc4e7;
-  left: 150px;
+  right: 0px;
   bottom: 50px;
   padding-bottom: 4px;
 }
 
 .btn-plus {
   color: #6cc4e7;
-  left: 150px;
+  right: 0px;
   bottom: 100px;
 }
 
 .btn-minus {
   color: #6cc4e7;
-  left: 150px;
+  right: 0px;
   bottom: 150px;
 }
 
 .btn-divide {
   color: #6cc4e7;
-  left: 50px;
+  right: 100px;
   bottom: 200px;
 }
 
 .btn-multiply {
   color: #6cc4e7;
-  left: 100px;
+  right: 50px;
   bottom: 200px;
   padding-bottom: 4px;
 }
 
 .btn-delete {
   color: #6cc4e7;
-  left: 150px;
+  right: 0px;
   bottom: 200px;
   text-align: top;
 }
@@ -148,4 +156,105 @@ code {
 .btn-clear {
   color: #6cc4e7;
   bottom: 200px;
+  right: 150px;
+}
+
+.advanced-calc {
+  height: 250px;
+  width: 20px;
+  background-color: rgb(206, 206, 206);
+  position: absolute;
+  bottom: 0;
+  right: 200px;
+  padding: 0;
+}
+
+.btn-e {
+  right: 220px;
+  font-family: cursive;
+}
+
+.btn-yx {
+  bottom: 50px;
+  right: 220px;
+}
+
+sup {
+  font-size: 50%;
+}
+
+.btn-one-x {
+  bottom: 100px;
+  right: 220px;
+  padding: 0;
+  font-size: 90%;
+}
+
+.btn-tan {
+  bottom: 150px;
+  right: 220px;
+  padding: 0;
+  font-size: 90%;
+}
+
+.btn-percent {
+  bottom: 200px;
+  right: 220px;
+}
+
+.btn-𝜋 {
+  bottom: 0px;
+  right: 270px;
+}
+
+.btn-x2 {
+  bottom: 50px;
+  right: 270px;
+}
+
+.btn-log {
+  bottom: 100px;
+  right: 270px;
+  padding: 0;
+  font-size: 90%;
+}
+
+.btn-cos {
+  bottom: 150px;
+  right: 270px;
+  padding: 0;
+  font-size: 90%;
+}
+
+.btn-√ {
+  bottom: 200px;
+  right: 270px;
+}
+
+.btn-absoluteValue {
+  bottom: 0px;
+  right: 320px;
+}
+
+.btn-In {
+  bottom: 50px;
+  right: 320px;
+}
+
+.btn-ex {
+  bottom: 100px;
+  right: 320px;
+  font-family: cursive;
+}
+
+.btn-sin {
+  bottom: 150px;
+  right: 320px;
+  padding: 0;
+  font-size: 90%;
+}
+
+.btn-factorial {
+  bottom: 200px;
+  right: 320px;
 }
