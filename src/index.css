@@ -114,11 +114,10 @@ code {
   right: 0px;
 }
 
-.btn-brackets {
+.btn-percent {
   color: #6cc4e7;
   right: 0px;
   bottom: 50px;
-  padding-bottom: 4px;
 }
 
 .btn-plus {
@@ -169,25 +168,44 @@ code {
   padding: 0;
 }
 
-.btn-e {
-  right: 220px;
-  font-family: cursive;
+.deg-radio-button {
+  width: 75px;
+  height: 50px;
+  position: absolute;
+  top: 100px;
+  right: 295px;
+  font-weight: 600;
+  color: green;
+  border-top: 1px solid black;
 }
 
-.btn-yx {
-  bottom: 50px;
+.rad-radio-button {
+  width: 75px;
+  height: 50px;
+  position: absolute;
+  top: 100px;
   right: 220px;
+  font-weight: 600;
+  color: green;
+  border-top: 1px solid black;
 }
 
-sup {
-  font-size: 50%;
-}
-
-.btn-one-x {
-  bottom: 100px;
-  right: 220px;
+.btn-sin {
+  bottom: 150px;
+  right: 320px;
   padding: 0;
   font-size: 90%;
+  font-weight: 600;
+  color: green;
+}
+
+.btn-cos {
+  bottom: 150px;
+  right: 270px;
+  padding: 0;
+  font-size: 90%;
+  font-weight: 600;
+  color: green;
 }
 
 .btn-tan {
@@ -195,21 +213,17 @@ sup {
   right: 220px;
   padding: 0;
   font-size: 90%;
+  font-weight: 600;
+  color: green;
 }
 
-.btn-percent {
-  bottom: 200px;
-  right: 220px;
-}
-
-.btn-𝜋 {
-  bottom: 0px;
-  right: 270px;
-}
-
-.btn-x2 {
-  bottom: 50px;
-  right: 270px;
+.btn-ctg {
+  bottom: 100px;
+  right: 320px;
+  padding: 0;
+  font-size: 90%;
+  font-weight: 600;
+  color: green; 
 }
 
 .btn-log {
@@ -219,16 +233,28 @@ sup {
   font-size: 90%;
 }
 
-.btn-cos {
-  bottom: 150px;
-  right: 270px;
-  padding: 0;
-  font-size: 90%;
+.btn-In {
+  bottom: 100px;
+  right: 220px;
 }
 
-.btn-√ {
-  bottom: 200px;
+.btn-factorial {
+  bottom: 50px;
+  right: 320px;
+}
+
+.btn-root {
+  bottom: 50px;
   right: 270px;
+}
+
+.btn-power {
+  bottom: 50px;
+  right: 220px;
+}
+
+sup {
+  font-size: 50%;
 }
 
 .btn-absoluteValue {
@@ -236,25 +262,12 @@ sup {
   right: 320px;
 }
 
-.btn-In {
-  bottom: 50px;
-  right: 320px;
+.btn-𝜋 {
+  bottom: 0px;
+  right: 270px;
 }
 
-.btn-ex {
-  bottom: 100px;
-  right: 320px;
+.btn-e {
+  right: 220px;
   font-family: cursive;
-}
-
-.btn-sin {
-  bottom: 150px;
-  right: 320px;
-  padding: 0;
-  font-size: 90%;
-}
-
-.btn-factorial {
-  bottom: 200px;
-  right: 320px;
 }

@@ -10,7 +10,20 @@ class Calculator extends React.Component {
       operatorIsPresent: false,
       message: '',
       showAdvancedCalcualtor: false
-    }
+    };
+    this.input = this.input.bind(this);
+    this.decimal = this.decimal.bind(this);
+    this.positiveOrNegative = this.positiveOrNegative.bind(this);
+    this.operation = this.operation.bind(this);
+    this.showButtons = this.showAdvancedButtons.bind(this);
+    this.percent = this.percent.bind(this);
+    this.squareRoot = this.squareRoot.bind(this);
+    this.sin = this.sin.bind(this);
+    this.cos = this.cos.bind(this);
+    this.tan = this.tan.bind(this);
+    this.factorial = this.factorial.bind(this);
+    this.deletion = this.deletion.bind(this);
+    this.clearInput = this.clearInput.bind(this);
   }
 
   input(symbol) {
@@ -23,13 +36,6 @@ class Calculator extends React.Component {
     } else if (!operatorIsPresent) {
       this.setState({
         displayValue: displayValue + symbol
-      })
-    }
-
-    if (displayValue.length === 15) {
-      this.setState({
-        displayValue: displayValue + '',
-        message: '15 symbols max'
       })
     }
   }
@@ -84,24 +90,7 @@ class Calculator extends React.Component {
     }
   }
 
-  deletion() {
-    const {displayValue} = this.state;
-    this.setState({
-      displayValue: displayValue.slice(0, -1)
-    })
-  }
-
-  clearInput() {
-    this.setState({
-      displayValue: '',
-      savedInnerValue: null,
-      operator: null,
-      operatorIsPresent: false,
-      message: ''
-    })
-  }
-
-  showButtons() {
+  showAdvancedButtons() {
     const {showAdvancedCalcualtor} = this.state;
 
     let calculatorWidth = document.querySelector('.calculator');
@@ -120,6 +109,118 @@ class Calculator extends React.Component {
         showAdvancedCalcualtor: false
       });
     }
+  }
+
+  percent() {
+    const {displayValue} = this.state;
+    if (displayValue) {
+      this.setState({
+        displayValue: displayValue / 100
+      })
+    }
+  }
+
+  sin() {
+    const {displayValue} = this.state;
+    const deg = document.querySelector('.deg');
+    const rad = document.querySelector('.rad');
+
+    if (displayValue && deg.checked) {
+      this.setState({
+        displayValue: Math.sin(displayValue * Math.PI / 180)
+      })
+    } else if (displayValue && rad.checked) {
+      this.setState({
+        displayValue: Math.sin(displayValue)
+      })
+    }
+  }
+
+  cos() {
+    const {displayValue} = this.state;
+    const deg = document.querySelector('.deg');
+    const rad = document.querySelector('.rad');
+
+    if (displayValue && deg.checked) {
+      this.setState({
+        displayValue: Math.cos(displayValue * Math.PI / 180)
+      })
+    } else if (displayValue && rad.checked) {
+      this.setState({
+        displayValue: Math.cos(displayValue)
+      })
+    }
+  }
+
+  tan() {
+    const {displayValue} = this.state;
+    const deg = document.querySelector('.deg');
+    const rad = document.querySelector('.rad');
+
+    if (displayValue && deg.checked) {
+      this.setState({
+        displayValue: Math.tan(displayValue * Math.PI / 180)
+      })
+    } else if (displayValue && rad.checked) {
+      this.setState({
+        displayValue: Math.tan(displayValue)
+      })
+    }
+  }
+
+  ctg() {
+    const {displayValue} = this.state;
+    const deg = document.querySelector('.deg');
+    const rad = document.querySelector('.rad');
+
+    if (displayValue && deg.checked) {
+      this.setState({
+        displayValue: 1 / Math.tan(displayValue * Math.PI / 180)
+      })
+    } else if (displayValue && rad.checked) {
+      this.setState({
+        displayValue: 1 / Math.tan(displayValue)
+      })
+    }
+  }
+
+  factorial(displayValue) {
+    // const {displayValue} = this.state;
+    if (displayValue && displayValue != 1) {
+      this.setState({
+        displayValue: displayValue * (displayValue - 1)
+      })
+    } else {
+      this.setState({
+        displayValue: 1
+      })
+    }
+  }
+
+  squareRoot() {
+    const {displayValue} = this.state;
+    if (displayValue) {
+      this.setState({
+        displayValue: Math.sqrt(displayValue)
+      })
+    }
+  }
+
+  deletion() {
+    const {displayValue} = this.state;
+    this.setState({
+      displayValue: displayValue.slice(0, -1)
+    })
+  }
+
+  clearInput() {
+    this.setState({
+      displayValue: '',
+      savedInnerValue: null,
+      operator: null,
+      operatorIsPresent: false,
+      message: ''
+    })
   }
 
   render() {
@@ -143,7 +244,7 @@ class Calculator extends React.Component {
           <button className="button btn-dot" onClick={() => this.decimal('.')}>.</button>
           <button className="button btn-plus-minus" onClick={() => this.positiveOrNegative()}>+/-</button>
           <button className="button btn-equals" onClick={() => this.operation('=')}>=</button>
-          <button className="button btn-brackets">()</button>
+          <button className="button btn-percent" onClick={() => this.percent()}>%</button>
           <button className="button btn-plus" onClick={() => this.operation('+')}>+</button>
           <button className="button btn-minus" onClick={() => this.operation('-')}>-</button>
           <button className="button btn-divide" onClick={() => this.operation('÷')}>÷</button>
@@ -151,23 +252,28 @@ class Calculator extends React.Component {
           <button className="button btn-delete" onClick={() => this.deletion()}>⌫</button>
           <button className="button btn-clear" onClick={() => this.clearInput()}>C</button>
         </div>
-        <button className="advanced-calc" onClick={() => this.showButtons()}>◄</button>
+        <button className="advanced-calc" onClick={() => this.showAdvancedButtons()}>◄</button>
         <div>
-          <button className="button btn-e">e</button>
-          <button className="button btn-yx">y<sup>x</sup></button>
-          <button className="button btn-one-x">1/x</button>
-          <button className="button btn-tan">tan</button>
-          <button className="button btn-percent">%</button>
-          <button className="button btn-𝜋">𝜋</button>
-          <button className="button btn-x2">x<sup>2</sup></button>
+          <div className="deg-radio-button">
+            <input className='deg' name="unit" type="radio" value="degree" id="degree" defaultChecked/>
+            <label for="degree">deg</label>
+          </div>
+          <div className="rad-radio-button">
+            <input className='rad' name="unit" type="radio" value="radian" id="radian" />
+            <label for="radian">rad</label>
+          </div>
+          <button className="button btn-sin" onClick={() => this.sin()}>sin</button>
+          <button className="button btn-cos" onClick={() => this.cos()}>cos</button>
+          <button className="button btn-tan" onClick={() => this.tan()}>tan</button>
+          <button className="button btn-ctg" onClick={() => this.ctg()}>ctg</button>
           <button className="button btn-log">log</button>
-          <button className="button btn-cos">cos</button>
-          <button className="button btn-√">√</button>
-          <button className="button btn-absoluteValue">|x|</button>
-          <button className="button btn-ex">e<sup>x</sup></button>
           <button className="button btn-In">In</button>
-          <button className="button btn-sin">sin</button>
-          <button className="button btn-factorial">x!</button>
+          <button className="button btn-factorial" onClick={() => this.factorial()}>x!</button>
+          <button className="button btn-root" onClick={() => this.squareRoot()}>√</button>
+          <button className="button btn-power">y<sup>x</sup></button>
+          <button className="button btn-absoluteValue">|x|</button>
+          <button className="button btn-𝜋" onClick={() => this.input(Math.PI)}>𝜋</button>
+          <button className="button btn-e" onClick={() => this.input(Math.E)}>e</button>          
         </div>
       </div>
       {/* <div className="message">{message}</div> */}
