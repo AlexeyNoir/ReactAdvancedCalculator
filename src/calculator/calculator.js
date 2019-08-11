@@ -11,22 +11,25 @@ class Calculator extends React.Component {
       message: '',
       showAdvancedCalcualtor: false
     };
-    this.input = this.input.bind(this);
-    this.decimal = this.decimal.bind(this);
-    this.positiveOrNegative = this.positiveOrNegative.bind(this);
-    this.operation = this.operation.bind(this);
-    this.showButtons = this.showAdvancedButtons.bind(this);
-    this.percent = this.percent.bind(this);
-    this.squareRoot = this.squareRoot.bind(this);
-    this.sin = this.sin.bind(this);
-    this.cos = this.cos.bind(this);
-    this.tan = this.tan.bind(this);
-    this.factorial = this.factorial.bind(this);
-    this.deletion = this.deletion.bind(this);
-    this.clearInput = this.clearInput.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.handleDecimal = this.handleDecimal.bind(this);
+    this.handlePositiveOrNegative = this.handlePositiveOrNegative.bind(this);
+    this.handleOperation = this.handleOperation.bind(this);
+    this.handleShowAdvancedButtons = this.handleShowAdvancedButtons.bind(this);
+    this.handlePercent = this.handlePercent.bind(this);
+    this.handleSquareRoot = this.handleSquareRoot.bind(this);
+    this.handleSin = this.handleSin.bind(this);
+    this.handleCos = this.handleCos.bind(this);
+    this.handleTan = this.handleTan.bind(this);
+    this.handleCtg = this.handleCtg.bind(this);
+    this.handleFactorial = this.handleFactorial.bind(this);
+    this.handleAbs = this.handleAbs.bind(this);
+    this.handleDeletion = this.handleDeletion.bind(this);
+    this.handleClearInput = this.handleClearInput.bind(this);
+    this.handleLog = this.handleLog.bind(this);
   }
 
-  input(symbol) {
+  handleInput(symbol) {
     const {displayValue, operatorIsPresent} = this.state;
     if (operatorIsPresent) {
       this.setState({
@@ -40,7 +43,7 @@ class Calculator extends React.Component {
     }
   }
 
-  decimal(dot) {
+  handleDecimal(dot) {
     const {displayValue} = this.state;
     if (displayValue.indexOf('.') === -1 && displayValue !== '') {
       this.setState ({
@@ -49,14 +52,14 @@ class Calculator extends React.Component {
     }
   }
 
-  positiveOrNegative() {
+  handlePositiveOrNegative() {
     const {displayValue} = this.state;
     this.setState({
       displayValue: Math.sign(Number(displayValue)) !== -1 ? '-' + displayValue : displayValue.slice(1)
     })
   }
 
-  operation(inputOperator) {
+  handleOperation(inputOperator) {
     const {displayValue, savedInnerValue, operator} = this.state;
     const enteredValue = parseFloat(displayValue);
     const previousValue = parseFloat(savedInnerValue);
@@ -65,6 +68,8 @@ class Calculator extends React.Component {
       '-': (firstValue, secondValue) => firstValue - secondValue,
       'x': (firstValue, secondValue) => firstValue * secondValue,
       '÷': (firstValue, secondValue) => firstValue / secondValue,
+      'y^x': (firstValue, secondValue) => Math.pow(firstValue, secondValue),
+      'ln': (firstValue, secondValue) => Math.round(Math.log(secondValue) / Math.log(firstValue)),
       '=': (firstValue, secondValue) => secondValue
     }
 
@@ -90,7 +95,7 @@ class Calculator extends React.Component {
     }
   }
 
-  showAdvancedButtons() {
+  handleShowAdvancedButtons() {
     const {showAdvancedCalcualtor} = this.state;
 
     let calculatorWidth = document.querySelector('.calculator');
@@ -111,7 +116,7 @@ class Calculator extends React.Component {
     }
   }
 
-  percent() {
+  handlePercent() {
     const {displayValue} = this.state;
     if (displayValue) {
       this.setState({
@@ -120,7 +125,7 @@ class Calculator extends React.Component {
     }
   }
 
-  sin() {
+  handleSin() {
     const {displayValue} = this.state;
     const deg = document.querySelector('.deg');
     const rad = document.querySelector('.rad');
@@ -136,7 +141,7 @@ class Calculator extends React.Component {
     }
   }
 
-  cos() {
+  handleCos() {
     const {displayValue} = this.state;
     const deg = document.querySelector('.deg');
     const rad = document.querySelector('.rad');
@@ -152,7 +157,7 @@ class Calculator extends React.Component {
     }
   }
 
-  tan() {
+  handleTan() {
     const {displayValue} = this.state;
     const deg = document.querySelector('.deg');
     const rad = document.querySelector('.rad');
@@ -168,7 +173,7 @@ class Calculator extends React.Component {
     }
   }
 
-  ctg() {
+  handleCtg() {
     const {displayValue} = this.state;
     const deg = document.querySelector('.deg');
     const rad = document.querySelector('.rad');
@@ -184,20 +189,40 @@ class Calculator extends React.Component {
     }
   }
 
-  factorial(displayValue) {
-    // const {displayValue} = this.state;
-    if (displayValue && displayValue != 1) {
-      this.setState({
-        displayValue: displayValue * (displayValue - 1)
-      })
-    } else {
-      this.setState({
+  handleFactorial() {
+    let {displayValue} = this.state;
+    if (displayValue && (displayValue === 0 || displayValue === 1)) {
+      this.setState ({
         displayValue: 1
+      })
+    }
+    for (let i = displayValue - 1; i >= 1; i--) {
+      displayValue *= i;
+    }
+    this.setState ({
+      displayValue: displayValue
+    })
+  }
+
+  handleAbs() {
+    const {displayValue} = this.state;
+    if (displayValue) {
+      this.setState({
+        displayValue: Math.abs(displayValue)
       })
     }
   }
 
-  squareRoot() {
+  handleLog() {
+    const {displayValue} = this.state;
+    if (displayValue) {
+      this.setState({
+        displayValue: Math.log10(displayValue)
+      })
+    }
+  }
+
+  handleSquareRoot() {
     const {displayValue} = this.state;
     if (displayValue) {
       this.setState({
@@ -206,14 +231,14 @@ class Calculator extends React.Component {
     }
   }
 
-  deletion() {
+  handleDeletion() {
     const {displayValue} = this.state;
     this.setState({
       displayValue: displayValue.slice(0, -1)
     })
   }
 
-  clearInput() {
+  handleClearInput() {
     this.setState({
       displayValue: '',
       savedInnerValue: null,
@@ -231,28 +256,28 @@ class Calculator extends React.Component {
       <div className="calculator">
         <div className="display">{displayValue}</div>
         <div className="button-set-1">
-          <button className="button btn-0" onClick={() => this.input(0)}>0</button>
-          <button className="button btn-1" onClick={() => this.input(1)}>1</button>
-          <button className="button btn-2" onClick={() => this.input(2)}>2</button>
-          <button className="button btn-3" onClick={() => this.input(3)}>3</button>
-          <button className="button btn-4" onClick={() => this.input(4)}>4</button>
-          <button className="button btn-5" onClick={() => this.input(5)}>5</button>
-          <button className="button btn-6" onClick={() => this.input(6)}>6</button>
-          <button className="button btn-7" onClick={() => this.input(7)}>7</button>
-          <button className="button btn-8" onClick={() => this.input(8)}>8</button>
-          <button className="button btn-9" onClick={() => this.input(9)}>9</button>
-          <button className="button btn-dot" onClick={() => this.decimal('.')}>.</button>
-          <button className="button btn-plus-minus" onClick={() => this.positiveOrNegative()}>+/-</button>
-          <button className="button btn-equals" onClick={() => this.operation('=')}>=</button>
-          <button className="button btn-percent" onClick={() => this.percent()}>%</button>
-          <button className="button btn-plus" onClick={() => this.operation('+')}>+</button>
-          <button className="button btn-minus" onClick={() => this.operation('-')}>-</button>
-          <button className="button btn-divide" onClick={() => this.operation('÷')}>÷</button>
-          <button className="button btn-multiply" onClick={() => this.operation('x')}>x</button>
-          <button className="button btn-delete" onClick={() => this.deletion()}>⌫</button>
-          <button className="button btn-clear" onClick={() => this.clearInput()}>C</button>
+          <button className="button btn-0" onClick={() => this.handleInput(0)}>0</button>
+          <button className="button btn-1" onClick={() => this.handleInput(1)}>1</button>
+          <button className="button btn-2" onClick={() => this.handleInput(2)}>2</button>
+          <button className="button btn-3" onClick={() => this.handleInput(3)}>3</button>
+          <button className="button btn-4" onClick={() => this.handleInput(4)}>4</button>
+          <button className="button btn-5" onClick={() => this.handleInput(5)}>5</button>
+          <button className="button btn-6" onClick={() => this.handleInput(6)}>6</button>
+          <button className="button btn-7" onClick={() => this.handleInput(7)}>7</button>
+          <button className="button btn-8" onClick={() => this.handleInput(8)}>8</button>
+          <button className="button btn-9" onClick={() => this.handleInput(9)}>9</button>
+          <button className="button btn-dot" onClick={() => this.handleDecimal('.')}>.</button>
+          <button className="button btn-plus-minus" onClick={() => this.handlePositiveOrNegative()}>+/-</button>
+          <button className="button btn-equals" onClick={() => this.handleOperation('=')}>=</button>
+          <button className="button btn-percent" onClick={() => this.handlePercent()}>%</button>
+          <button className="button btn-plus" onClick={() => this.handleOperation('+')}>+</button>
+          <button className="button btn-minus" onClick={() => this.handleOperation('-')}>-</button>
+          <button className="button btn-divide" onClick={() => this.handleOperation('÷')}>÷</button>
+          <button className="button btn-multiply" onClick={() => this.handleOperation('x')}>x</button>
+          <button className="button btn-delete" onClick={() => this.handleDeletion()}>⌫</button>
+          <button className="button btn-clear" onClick={() => this.handleClearInput()}>C</button>
         </div>
-        <button className="advanced-calc" onClick={() => this.showAdvancedButtons()}>◄</button>
+        <button className="advanced-calc" onClick={() => this.handleShowAdvancedButtons()}>◄</button>
         <div>
           <div className="deg-radio-button">
             <input className='deg' name="unit" type="radio" value="degree" id="degree" defaultChecked/>
@@ -262,18 +287,18 @@ class Calculator extends React.Component {
             <input className='rad' name="unit" type="radio" value="radian" id="radian" />
             <label for="radian">rad</label>
           </div>
-          <button className="button btn-sin" onClick={() => this.sin()}>sin</button>
-          <button className="button btn-cos" onClick={() => this.cos()}>cos</button>
-          <button className="button btn-tan" onClick={() => this.tan()}>tan</button>
-          <button className="button btn-ctg" onClick={() => this.ctg()}>ctg</button>
-          <button className="button btn-log">log</button>
-          <button className="button btn-In">In</button>
-          <button className="button btn-factorial" onClick={() => this.factorial()}>x!</button>
-          <button className="button btn-root" onClick={() => this.squareRoot()}>√</button>
-          <button className="button btn-power">y<sup>x</sup></button>
-          <button className="button btn-absoluteValue">|x|</button>
-          <button className="button btn-𝜋" onClick={() => this.input(Math.PI)}>𝜋</button>
-          <button className="button btn-e" onClick={() => this.input(Math.E)}>e</button>          
+          <button className="button btn-sin" onClick={() => this.handleSin()}>sin</button>
+          <button className="button btn-cos" onClick={() => this.handleCos()}>cos</button>
+          <button className="button btn-tan" onClick={() => this.handleTan()}>tan</button>
+          <button className="button btn-ctg" onClick={() => this.handleCtg()}>ctg</button>
+          <button className="button btn-factorial" onClick={() => this.handleFactorial()}>x!</button>
+          <button className="button btn-absoluteValue" onClick={() => this.handleAbs()}>|x|</button>
+          <button className="button btn-log" onClick={() => this.handleLog()}>log</button>
+          <button className="button btn-ln" onClick={() => this.handleOperation('ln')}>ln</button>
+          <button className="button btn-power" onClick={() => this.handleOperation('y^x')}>y<sup>x</sup></button>
+          <button className="button btn-root" onClick={() => this.handleSquareRoot()}>√</button>
+          <button className="button btn-𝜋" onClick={() => this.handleInput(Math.PI)}>𝜋</button>
+          <button className="button btn-e" onClick={() => this.handleInput(Math.E)}>e</button>          
         </div>
       </div>
       {/* <div className="message">{message}</div> */}
