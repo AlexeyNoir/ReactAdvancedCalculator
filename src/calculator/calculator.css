@@ -1,0 +1,258 @@
+.calculator {
+  position: relative;
+  margin: auto;
+  width: 220px;
+  height: 350px;
+  background-color: white;
+  border: solid 1px black;
+  transition: width 0.4s;
+  overflow: hidden;
+}
+
+.display {
+  position: absolute;
+  width: 95%;
+  padding-right: 5px;
+  text-align: right;
+  border-radius: 10px;
+}
+
+.button {
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  font-size: 32px;
+  font-weight: 500;
+  position: absolute;
+  bottom: 0;
+}
+
+.btn-0 {
+  right: 150px;
+}
+
+.btn-1 {
+  bottom: 50px;
+  right: 150px;
+}
+
+.btn-2 {
+  bottom: 50px;
+  right: 100px;
+}
+
+.btn-3 {
+  bottom: 50px;
+  right: 50px;
+}
+
+.btn-4 {
+  bottom: 100px;
+  right: 150px;
+}
+
+.btn-5 {
+  bottom: 100px;
+  right: 100px;
+}
+
+.btn-6 {
+  bottom: 100px;
+  right: 50px;
+}
+
+.btn-7 {
+  bottom: 150px;
+  right: 150px;
+}
+
+.btn-8 {
+  bottom: 150px;
+  right: 100px;
+}
+
+.btn-9 {
+  bottom: 150px;
+  right: 50px;
+}
+
+.btn-dot {
+  right: 100px;
+}
+
+.btn-plus-minus {
+  padding-left: 3px;
+  right: 50px;
+}
+
+.btn-equals {
+  color: green;
+  right: 0px;
+}
+
+.btn-percent {
+  color: #2396c4;
+  right: 0px;
+  bottom: 50px;
+}
+
+.btn-plus {
+  color: #2396c4;
+  right: 0px;
+  bottom: 100px;
+}
+
+.btn-minus {
+  color: #2396c4;
+  right: 0px;
+  bottom: 150px;
+}
+
+.btn-divide {
+  color: #2396c4;
+  right: 100px;
+  bottom: 200px;
+}
+
+.btn-multiply {
+  color: #2396c4;
+  right: 50px;
+  bottom: 200px;
+  padding-bottom: 4px;
+}
+
+.btn-delete {
+  color: #2396c4;
+  right: 0px;
+  bottom: 200px;
+  text-align: top;
+}
+
+.btn-clear {
+  color: #2396c4;
+  bottom: 200px;
+  right: 150px;
+}
+
+.advanced-calc {
+  height: 250px;
+  width: 20px;
+  background-color: rgb(206, 206, 206);
+  position: absolute;
+  bottom: 0;
+  right: 200px;
+  padding: 0;
+}
+
+.deg-radio-button {
+  width: 75px;
+  height: 50px;
+  position: absolute;
+  top: 100px;
+  right: 295px;
+  font-weight: 600;
+  color: green;
+  border-top: 1px solid black;
+}
+
+.rad-radio-button {
+  width: 75px;
+  height: 50px;
+  position: absolute;
+  top: 100px;
+  right: 220px;
+  font-weight: 600;
+  color: green;
+  border-top: 1px solid black;
+}
+
+.btn-sin {
+  bottom: 150px;
+  right: 320px;
+  padding: 0;
+  font-size: 90%;
+  font-weight: 600;
+  color: green;
+}
+
+.btn-cos {
+  bottom: 150px;
+  right: 270px;
+  padding: 0;
+  font-size: 90%;
+  font-weight: 600;
+  color: green;
+}
+
+.btn-tan {
+  bottom: 150px;
+  right: 220px;
+  padding: 0;
+  font-size: 90%;
+  font-weight: 600;
+  color: green;
+}
+
+.btn-ctg {
+  bottom: 100px;
+  right: 320px;
+  padding: 0;
+  font-size: 90%;
+  font-weight: 600;
+  color: green; 
+}
+
+.btn-factorial {
+  bottom: 100px;
+  right: 270px;
+  color: #2396c4;
+}
+
+.btn-absoluteValue {
+  bottom: 100px;
+  right: 220px;
+  color: #2396c4;
+}
+
+.btn-log {
+  bottom: 50px;
+  right: 320px;
+  padding: 0;
+  font-size: 90%;
+  color: #2396c4;
+}
+
+.btn-ln {
+  bottom: 50px;
+  right: 270px;
+  color: #2396c4;
+}
+
+.btn-power {
+  bottom: 50px;
+  right: 220px;
+  color: #2396c4;
+}
+
+sup {
+  font-size: 50%;
+  color: #2396c4;
+}
+
+.btn-root {
+  bottom: 0px;
+  right: 320px;
+  color: #2396c4;
+}
+
+.btn-𝜋 {
+  bottom: 0px;
+  right: 270px;
+  color: #2396c4;
+}
+
+.btn-e {
+  right: 220px;
+  font-family: cursive;
+  color: #2396c4;
+}
