@@ -50,8 +50,7 @@ export default class Calculator extends React.Component {
     const {displayValue} = this.state;
     if (displayValue.indexOf('.') === -1 && displayValue !== '') {
       this.setState ({
-        displayValue: displayValue + dot,
-        operatorIsPresent: false
+        displayValue: displayValue + dot
       })
     }
   }
@@ -124,7 +123,7 @@ export default class Calculator extends React.Component {
     const {displayValue} = this.state;
     if (displayValue) {
       this.setState({
-        displayValue: displayValue / 100
+        displayValue: (displayValue / 100).toString()
       })
     }
   }
@@ -136,11 +135,11 @@ export default class Calculator extends React.Component {
 
     if (displayValue && deg.checked) {
       this.setState({
-        displayValue: Math.sin(displayValue * Math.PI / 180)
+        displayValue: (Math.sin(displayValue * Math.PI / 180)).toString()
       })
     } else if (displayValue && rad.checked) {
       this.setState({
-        displayValue: Math.sin(displayValue)
+        displayValue: (Math.sin(displayValue)).toString()
       })
     }
   }
@@ -152,11 +151,11 @@ export default class Calculator extends React.Component {
 
     if (displayValue && deg.checked) {
       this.setState({
-        displayValue: Math.cos(displayValue * Math.PI / 180)
+        displayValue: (Math.cos(displayValue * Math.PI / 180)).toString()
       })
     } else if (displayValue && rad.checked) {
       this.setState({
-        displayValue: Math.cos(displayValue)
+        displayValue: (Math.cos(displayValue)).toString()
       })
     }
   }
@@ -168,11 +167,11 @@ export default class Calculator extends React.Component {
 
     if (displayValue && deg.checked) {
       this.setState({
-        displayValue: Math.tan(displayValue * Math.PI / 180)
+        displayValue: (Math.tan(displayValue * Math.PI / 180)).toString()
       })
     } else if (displayValue && rad.checked) {
       this.setState({
-        displayValue: Math.tan(displayValue)
+        displayValue: (Math.tan(displayValue)).toString()
       })
     }
   }
@@ -184,11 +183,11 @@ export default class Calculator extends React.Component {
 
     if (displayValue && deg.checked) {
       this.setState({
-        displayValue: 1 / Math.tan(displayValue * Math.PI / 180)
+        displayValue: (1 / Math.tan(displayValue * Math.PI / 180)).toString()
       })
     } else if (displayValue && rad.checked) {
       this.setState({
-        displayValue: 1 / Math.tan(displayValue)
+        displayValue: (1 / Math.tan(displayValue)).toString()
       })
     }
   }
@@ -204,7 +203,7 @@ export default class Calculator extends React.Component {
       displayValue *= i;
     }
     this.setState ({
-      displayValue: displayValue
+      displayValue: (displayValue).toString()
     })
   }
 
@@ -212,7 +211,7 @@ export default class Calculator extends React.Component {
     const {displayValue} = this.state;
     if (displayValue) {
       this.setState({
-        displayValue: Math.abs(displayValue)
+        displayValue: (Math.abs(displayValue)).toString()
       })
     }
   }
@@ -221,7 +220,7 @@ export default class Calculator extends React.Component {
     const {displayValue} = this.state;
     if (displayValue) {
       this.setState({
-        displayValue: Math.log10(displayValue)
+        displayValue: (Math.log10(displayValue)).toString()
       })
     }
   }
@@ -230,16 +229,19 @@ export default class Calculator extends React.Component {
     const {displayValue} = this.state;
     if (displayValue) {
       this.setState({
-        displayValue: Math.sqrt(displayValue)
+        displayValue: (Math.sqrt(displayValue)).toString()
       })
     }
   }
 
   handleDeletion() {
     const {displayValue} = this.state;
-    this.setState({
-      displayValue: displayValue.slice(0, -1)
-    })
+    if (displayValue) {
+      this.setState({
+        displayValue: (displayValue).toString().slice(0, -1),
+        operatorIsPresent: false
+      })
+    }
   }
 
   handleClearInput() {
