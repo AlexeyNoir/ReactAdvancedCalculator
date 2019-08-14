@@ -51,7 +51,8 @@ export default class Calculator extends React.Component {
     const {displayValue} = this.state;
     if (displayValue.indexOf('.') === -1 && displayValue !== '') {
       this.setState ({
-        displayValue: displayValue + dot
+        displayValue: displayValue + dot,
+        operatorIsPresent: false
       })
     }
   }
@@ -59,7 +60,8 @@ export default class Calculator extends React.Component {
   handlePositiveOrNegative() {
     const {displayValue} = this.state;
     this.setState({
-      displayValue: Math.sign(Number(displayValue)) !== -1 ? '-' + displayValue : displayValue.slice(1)
+      displayValue: Math.sign(Number(displayValue)) !== -1 ? '-' + displayValue : displayValue.slice(1),
+      operatorIsPresent: false
     })
   }
 
