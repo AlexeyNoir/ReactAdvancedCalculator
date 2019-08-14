@@ -18,7 +18,7 @@ const AdvancedButtons = props => {
       <button className="button btn-factorial" onClick={() => props.handleFactorial()}>x!</button>
       <button className="button btn-absoluteValue" onClick={() => props.handleAbs()}>|x|</button>
       <button className="button btn-log" onClick={() => props.handleLog()}>log</button>
-      <button className="button btn-ln" onClick={() => props.handleOperation('ln')}>ln</button>
+      <button className="button btn-ln" onClick={() => props.handleLn('ln')}>ln</button>
       <button className="button btn-power" onClick={() => props.handleOperation('y^x')}>y<sup>x</sup></button>
       <button className="button btn-root" onClick={() => props.handleSquareRoot()}>√</button>
       <button className="button btn-𝜋" onClick={() => props.handleInput(Math.PI)}>𝜋</button>

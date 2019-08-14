@@ -30,6 +30,7 @@ export default class Calculator extends React.Component {
     this.handleDeletion = this.handleDeletion.bind(this);
     this.handleClearInput = this.handleClearInput.bind(this);
     this.handleLog = this.handleLog.bind(this);
+    this.handleLn = this.handleLn.bind(this);
   }
 
   handleInput(symbol) {
@@ -72,7 +73,6 @@ export default class Calculator extends React.Component {
       'x': (firstValue, secondValue) => +(firstValue * secondValue).toFixed(10),
       '÷': (firstValue, secondValue) => +(firstValue / secondValue).toFixed(10),
       'y^x': (firstValue, secondValue) => Math.pow(firstValue, secondValue),
-      'ln': (firstValue, secondValue) => Math.round(Math.log(secondValue) / Math.log(firstValue)),
       '=': (firstValue, secondValue) => secondValue
     }
 
@@ -225,6 +225,15 @@ export default class Calculator extends React.Component {
     }
   }
 
+  handleLn() {
+    const {displayValue} = this.state;
+    if (displayValue) {
+      this.setState({
+        displayValue: (Math.log(displayValue)).toString()
+      })
+    }
+  }
+
   handleSquareRoot() {
     const {displayValue} = this.state;
     if (displayValue) {
@@ -278,6 +287,7 @@ export default class Calculator extends React.Component {
             handleFactorial={this.handleFactorial}
             handleAbs={this.handleAbs}
             handleLog={this.handleLog}
+            handleLn={this.handleLn}
             handleOperation={this.handleOperation}
             handleSquareRoot={this.handleSquareRoot}
             handleInput={this.handleInput}
