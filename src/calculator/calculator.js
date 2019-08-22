@@ -15,6 +15,7 @@ export default class Calculator extends React.Component {
     };
 
     this.handleInput = this.handleInput.bind(this);
+    this.handle_pi_and_e = this.handle_pi_and_e.bind(this);
     this.handleDecimal = this.handleDecimal.bind(this);
     this.handlePositiveOrNegative = this.handlePositiveOrNegative.bind(this);
     this.handleOperation = this.handleOperation.bind(this);
@@ -45,6 +46,21 @@ export default class Calculator extends React.Component {
         displayValue: displayValue + symbol
       })
     }
+  }
+
+  handle_pi_and_e(pi_or_e) {
+    const {displayValue, operatorIsPresent} = this.state;
+    if (operatorIsPresent) {
+      this.setState({
+        displayValue: '' + pi_or_e,
+        operatorIsPresent: false
+      })
+    } else if (!operatorIsPresent && displayValue === '') {
+      this.setState({
+        displayValue: displayValue + pi_or_e
+      })
+    }
+  
   }
 
   handleDecimal(dot) {
@@ -281,7 +297,8 @@ export default class Calculator extends React.Component {
             handleClearInput={this.handleClearInput}
           />
           <button className="advanced-calc" onClick={() => this.handleShowAdvancedButtons()}>◄</button>
-          <AdvancedButtons 
+          <AdvancedButtons
+            handle_pi_and_e={this.handle_pi_and_e}
             handleSin={this.handleSin}
             handleCos={this.handleCos}
             handleTan={this.handleTan}

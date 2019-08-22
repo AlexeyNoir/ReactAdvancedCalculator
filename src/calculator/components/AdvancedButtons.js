@@ -21,8 +21,8 @@ const AdvancedButtons = props => {
       <button className="button btn-ln" onClick={() => props.handleLn('ln')}>ln</button>
       <button className="button btn-power" onClick={() => props.handleOperation('y^x')}>y<sup>x</sup></button>
       <button className="button btn-root" onClick={() => props.handleSquareRoot()}>√</button>
-      <button className="button btn-𝜋" onClick={() => props.handleInput(Math.PI)}>𝜋</button>
-      <button className="button btn-e" onClick={() => props.handleInput(Math.E)}>e</button>
+      <button className="button btn-𝜋" onClick={() => props.handle_pi_and_e(Math.PI)}>𝜋</button>
+      <button className="button btn-e" onClick={() => props.handle_pi_and_e(Math.E)}>e</button>
     </div>
   );
 };
