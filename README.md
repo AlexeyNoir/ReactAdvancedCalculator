@@ -4,7 +4,7 @@
 
 ![alt text](preview.jpg "Advanced Calculator")
 
-## Link: will be soon
+## Link: https://eager-fermi-c227b9.netlify.com/
 
 ## Note:
 
