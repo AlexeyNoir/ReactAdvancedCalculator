@@ -1,9 +1,5 @@
 # My first React (CRA) project - Advanced Calculator.
 
-## Preview:
-
-![alt text](preview.jpg "Advanced Calculator")
-
 ## Link: https://eager-fermi-c227b9.netlify.com/
 
 ## Note:
