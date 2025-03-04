@@ -1,6 +1,6 @@
 # My first React (CRA) project - Advanced Calculator.
 
-## Link: https://eager-fermi-c227b9.netlify.com/
+## Link: [https://eager-fermi-c227b9.netlify.com/](https://eager-fermi-c227b9.netlify.app/)
 
 ## Note:
 
